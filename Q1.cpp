@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int removeDuplicates(vector<int> arr)
+int removeDuplicates(vector<int> &arr)
 {
+  if (arr.empty())
+    return 0;
+
   int i = 0;
-  for (int j = 0; j < arr.size(); j++)
+  for (int j = 1; j < arr.size(); j++)
   {
-    if (arr[i] < arr[j])
+    if (arr[j] != arr[i])
     {
-      int temp = arr[i + 1];
-      arr[i + 1] = arr[j];
-      arr[j] = temp;
       i++;
+      arr[i] = arr[j];
     }
   }
   return i + 1;
